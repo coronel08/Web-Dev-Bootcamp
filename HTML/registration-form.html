@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Form Registration</h1>
+    <form action="">
+        <div class="name">
+            <label for="first">First Name<input type="text" id="first" name="first" placeholder="First Name" required></label>
+            <label for="last">Last Name<input type="text" id="last" name="last" placeholder="Last Name" required></label>
+        </div>
+        <div class="runType">
+            <label for="fullrun">Full Run <input type="radio" id="fullrun" name="fullrun" value="fullrun"></label>
+            <label for="halfrun">Half Run<input type="radio" id="halfrun" name="halfrun" value="halfrun"></label>
+            <label for="5k">5k<input type="radio" id="5k" name="5k" value="5k"></label>
+        </div>
+        <div class="registrationInfo">
+            <label for="email">Email<input type="email" id="email" name="email" required></label>
+            <label for="password">Password<input type="password" id="password" name="password" required></label>
+            <br>
+            <label for="age">Select Age group <select name="age" id="age">
+                <option value="20-30">20-30</option>
+                <option value="30-40">30-40</option>
+                <option value="40-50">40-50</option>
+            </select> </label>
+            <button>Submit</button>
+        </div>
+    </form>
+</body>
+
+</html>
