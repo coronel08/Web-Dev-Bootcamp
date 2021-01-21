@@ -18,3 +18,4 @@ venv\Scripts\activate
 # Todo
 - [x] Add MakeDocs / Python for notes
 - [ ] Finish Html/CSS Notes
+- [ ] Merge notes on html / css
