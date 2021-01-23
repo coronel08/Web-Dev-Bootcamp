@@ -19,6 +19,9 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
     * [Selectors](#selectors)
     * [Pseudo Classes](#pseudo-classes)
     * [Pseudo Elements](#pseudo-elements)
+    * [Position](#position)
+    * [Transition](#transition)
+    * [Transform](#transform)
 
 ## HTML
 Can use [Emmet shortcuts](https://docs.emmet.io/cheat-sheet/) for html
@@ -95,6 +98,7 @@ Can also create custom properties/variables
 Need to merge with other doc on measurements
 * em (parents size, changes if nested in a loop/list)
 * rem (gets size from root of document)
+* auto
 
 <br><br>
 
@@ -191,3 +195,23 @@ Keyword added to a selector
 * ::first-letter
 * ::first-line
 * ::selection
+
+<br><br>
+
+### Position
+[Poition MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/position) Ch9 video 94.  
+* static
+* relative (can change top and sides from where it would be regularly)
+* absolute (removed from flow, can get position from closest ancestor, if no ancestor then the initial containing block. Try by making parent relative )
+* fixed (always present)
+<br><br>
+
+### Transition
+Transition format for changing speed of transitions. Works well on hover or active. Look into timing functions for ease in animations etc   
+{
+    Transition: (property name) (duration) (timing function) (delay)
+}
+<br><br>
+
+### Transform
+[MDN transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) for rotate, scale, move/translate etc
