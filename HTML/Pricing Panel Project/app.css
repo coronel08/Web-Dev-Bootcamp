@@ -1,0 +1,102 @@
+html{
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background-color: #60a9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 15px;
+}
+
+.panel{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 40px;
+    padding: 15px 25px;
+    width: 100%;
+    max-width: 960px;
+}
+
+.pricing-plan{
+    border-bottom: 5px solid #e1f1ff;
+}
+
+.pricing-plan:last-child{
+    border-bottom: none;
+}
+
+.pricing-img{
+    margin-bottom: 15px;
+    max-width: 100%;
+}
+
+.pricing-header{
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 10px;
+}
+
+.pricing-features{
+    list-style: none;
+    margin: 40px 0 25px;
+    color: #016ff9;
+}
+
+.pricing-features-item{
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 12px;
+    padding: 10px;
+    line-height: 2;
+    border-top: 1px solid #e1f1ff;
+
+}
+
+/* Made block to take its own column */
+.pricing-price{
+    color: #016ff9;
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.pricing-button{
+    border: 1px solid #9dd1ff;
+    border-radius: 10px;
+    color: #348efe;
+    display: inline-block;
+    padding: 15px 35px;
+    text-decoration: none;
+    margin: 10px;
+    transition: background-color 200ms ease-in-out;
+}
+
+.pricing-button:hover, .pricing-button:focus{
+    background-color: #e1f1ff;
+}
+
+@media (min-width: 900px){
+    body{
+        margin: 0;
+    }
+    .panel{
+        flex-direction: row;
+    }
+
+    .pricing-plan{
+        border-bottom: none;
+        padding: 0px 20px;
+        border-right: 1px dotted blue;
+    }
+
+    .pricing-plan:last-child{
+        border-right: none;
+    }
+}

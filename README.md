@@ -1,5 +1,6 @@
 # Web-Dev-Bootcamp-Colt-Steele
-Starting the bootcamp
+Starting the bootcamp, moved notes to my-notes.fcoronel.com
+
 
 
 Added python venv using 
@@ -20,10 +21,12 @@ venv\Scripts\activate
 ## Todo
 - [ ] Dockerize notes and host up
 - [x] Add MakeDocs / Python for notes
-- [ ] Finish Html/CSS Notes
-- [ ] Merge notes on html / css
-- [ ] Add git notes section
-- [ ] Add [Docker notes](https://github.com/coronel08/Docker) also [here](https://github.com/coronel08/docker-django-quiz-stack)
+- [x] Finish Html/CSS Notes
+- [x] Merge notes on html / css
+- [x] Add git notes section
+- [x] Add [Docker notes](https://github.com/coronel08/Docker) also [here](https://github.com/coronel08/docker-django-quiz-stack)
+### Projects
+- [ ] Ch:11 Pricing Panel
 
 
 ## Project Setup

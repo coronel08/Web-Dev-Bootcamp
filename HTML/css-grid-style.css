@@ -1,0 +1,160 @@
+.item{
+    border: 3px solid red;
+}
+
+.task{
+    border: 3px solid blue;
+}
+
+/* Using display grid and auto-fit, could also use auto-fill*/
+.task-container{
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+}
+
+.task-3-1.container {
+    display: grid;
+    height: 80vh;
+    grid-template-rows: auto auto 1fr auto auto;
+    gap: 12px;
+}
+
+
+@media(max-width: 720px){
+    .task-3-1.container {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .task-3-1 .header {
+        grid-column: 1 / span 12;
+    }
+
+    .task-3-1 .navigation {
+        grid-column: 1 / span 12;
+    }
+
+    .task-3-1 .main{
+        grid-column: 3 / span 10;
+
+    }
+
+    /* If grid row isnt specified, it doesnt overlap with main */
+    .task-3-1 .sidebar{
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
+
+    .task-3-1 .ads{
+        grid-column: 1 / span 2;
+    }
+
+    .task-3-1 .footer{
+        grid-column: 3 / span 10;
+    }
+}
+
+
+@media(min-width: 1020px){
+    .task-3-1.container {
+        grid-template-columns: repeat(12, 1fr);
+    }
+
+    .task-3-1 .header {
+        grid-column: 1 / span 12;
+    }
+
+    .task-3-1 .navigation {
+        grid-column: 3 / span 8;
+    }
+
+    .task-3-1 .main{
+        grid-column: 3 / span 8;
+
+    }
+
+    /* If grid row isnt specified, it doesnt overlap with main */
+    .task-3-1 .sidebar{
+        grid-column: 1 / span 2;
+        grid-row: 2 /span 2;
+    }
+
+    .task-3-1 .ads{
+        grid-column: 11 / span 2;
+        grid-row: 2 /span 2;
+    }
+
+    .task-3-1 .footer{
+        grid-column: 1 / span 12;
+    }
+}
+
+
+/* ----------------------------------------------------- */
+/* css-grid-template areas*/
+
+/* Task 3.2 */
+
+.task-3-2.container {
+    display: grid;
+    height: 90vh;
+    gap: 20px;
+    grid-template-rows: auto auto 1fr auto auto auto;
+    grid-template-areas: "header"
+    "nav"
+    "main"
+    "ads"
+    "sidebar"
+    "footer";
+}
+
+.task-3-2 .header {
+    grid-area: header;
+}
+
+.task-3-2 .navigation {
+    grid-area: nav;
+}
+
+.task-3-2 .ads {
+    grid-area: ads;
+}
+
+.task-3-2 .sidebar {
+    grid-area: sidebar;
+}
+
+.task-3-2 .main {
+    grid-area: main;
+}
+
+.task-3-2 .footer {
+    grid-area: footer;
+}
+
+@media (max-width: 720px) {
+    .task-3-2.container{
+        grid-template-areas: 
+        "header header header" 
+        "nav nav nav"
+        "sidebar main main"
+        "ads footer footer";
+
+        grid-template-rows: auto auto 1fr auto;
+    }
+}
+
+@media (min-width: 1020px) {
+    .task-3-2.container{
+        grid-template-areas: 
+        "nav nav nav nav"
+        "sidebar header header ads"
+        "sidebar main main ads"
+        "footer footer footer footer";
+
+        grid-template-columns: 1fr 5fr 5fr 1fr;
+        grid-template-rows: auto auto 1fr auto;
+    }
+}
