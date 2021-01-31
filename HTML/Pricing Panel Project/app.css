@@ -12,6 +12,7 @@ body{
     margin: 15px;
 }
 
+/* Main component wrapper, nested flex inside body */
 .panel{
     background-color: white;
     display: flex;
@@ -82,6 +83,7 @@ body{
     background-color: #e1f1ff;
 }
 
+/* Mobile view done first, this is for desktop view  */
 @media (min-width: 900px){
     body{
         margin: 0;
