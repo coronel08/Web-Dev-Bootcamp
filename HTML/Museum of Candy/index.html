@@ -1,29 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
-    
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="app.css">
 
+
     <title>Museum of Candy</title>
 </head>
-<body>
-    
 
+<body>
+    <!-- Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-sm py-0 fixed-top">
+        <a href="#" class="navbar-brand text-uppercase">Candy</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">Tickets</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container for Img and Museum of Candy Headers -->
+    <section class="container-fluid px-0">
+        <div class="row align-items-center mx-0">
+            <div class="col-lg-6">
+                <div id="heading-group" class="text-white text-uppercase text-center d-none d-lg-block">
+                    <h2>Museum<span>/</span>of<span>/</span>Candy</h2>
+                    <h2>Museum<span>/</span>of<span>/</span>Candy</h2>
+                    <h2>Museum<span>/</span>of<span>/</span>Candy</h2>
+                    <h2>Museum<span>/</span>of<span>/</span>Candy</h2>
+                    <h2>Museum<span>/</span>of<span>/</span>Candy</h2>
+                    <h2>Museum<span>/</span>of<span>/</span>Candy</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 px-0">
+                <img class="img-fluid" src="imgs/hand2.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section for body -->
+    <section class="container-fluid px-0">
+        <div class="row align-items-center mx-0">
+            <!-- make img come first past md size -->
+            <div class="col-md-6 order-2 order-md-1 px-0">
+                <img class="img-fluid" src="./imgs/milk.png" alt="">
+            </div>
+            <!-- make image come second past md size -->
+            <div class="col-md-6 text-center order-1 order-md-2">
+                <div class="row justify-content-center">
+                    <!-- Put this col-10 in a col-6 to center it -->
+                    <div class="col-10 px-0 blurb">
+                        <h2 id="title-1" class="text-uppercase">Museum of Candy</h2>
+                        <img src="./imgs/lolli_icon.png" class="d-none d-lg-inline" alt="">
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci ipsa
+                            architecto, aliquid dicta, quibusdam illum doloribus est vitae tenetur excepturi nulla
+                            molestias accusantium. Veniam quibusdam vero atque neque sequi ipsam, quas voluptates
+                            veritatis voluptatum enim culpa eius! Ducimus, incidunt quaerat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Section -->
+    <section class="container-fluid px-0">
+        <div class="row align-items-center mx-0">
+            <div class="col-md-6">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo culpa illo dolores magni neque
+                    provident obcaecati voluptatem dicta nostrum qui unde ullam aliquid, corporis quia distinctio
+                    voluptatum quas quidem. Laborum nobis, eveniet cumque aut doloremque in illo odit magnam maiores.
+                </p>
+            </div>
+            <div class="col-md-6 px-0">
+                <img src="./imgs/gumball.png" alt="" class="img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Section Overlap -->
+    <section class="container-fluid px-0" id="final-section">
+        <div class="row mx-0 d-lg-none">
+            <div id="overlap-img" class="col px-0">
+                <img src="./imgs/sprinkles.png" alt="" class="img-fluid">
+                <div class="overlap-text row justify-content-center mx-0">
+                    <div class="col-5 bg-light">
+                        <h2>Contact Us</h2>
+                    </div>
+                    <div class="col-5" id="overlap-about-us">
+                        <h2>About Us</h2>
+                    </div>
+                    <p class="bg-white col-10">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
+                        voluptate doloremque optio
+                        unde saepe vel dolores eveniet. Quam tempore accusantium sapiente sequi ipsam maiores veniam,
+                        porro ab autem, consequuntur quos cupiditate sunt, sit facilis. Quam itaque id nemo porro
+                        debitis.</p>
+                </div>
+                <div class="overlap-footer">
+                    <div class="col row">
+                        <p class="pl-5">lorem</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    
+    <!-- Custom Javascript and Jquery Script for changing navbar when scrolled  -->
+    <script>
+        $(function() {
+            $(document).scroll(function(){
+                var $nav = $("#mainNavbar");
+                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            })
+        })
+    </script>
 </body>
+
 </html>

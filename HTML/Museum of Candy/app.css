@@ -1,0 +1,81 @@
+body {
+    background: #f5d9d5;
+    font-family: "Nunito", sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+p{
+    color: #f498b8;
+    font-weight: 100;
+    font-size: 1.125rem;
+    line-height: 2;
+}
+
+#mainNavbar {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+#mainNavbar .nav-link {
+    color: white;
+}
+
+#mainNavbar .nav-link:hover {
+    color: #EA1c2c;
+}
+
+#mainNavbar .navbar-brand {
+    color: #EA1c2c;
+}
+
+/* Make spans in Musem of Candy turn red */
+
+#heading-group span {
+    color: #EA1c2c;
+}
+
+#heading-group h2 {
+    font-weight: 100;
+    font-size: 4rem;
+}
+
+h2{
+    color: #EA1c2c;
+    font-weight: 100;
+    font-size: 2.5rem;
+    padding-top: 10px;
+}
+
+.overlap-img{
+    z-index: 0;
+    max-height: 400px;
+}
+
+.overlap-text{
+    z-index: 4;
+    margin-top: -90%;
+    padding-left: 3rem;
+}
+
+#overlap-about-us{
+    background-color: #f498b8;
+}
+
+.overlap-footer p{
+    z-index: 8;
+    font-weight:800;
+}
+
+.navbar.scrolled{
+    background: rgb(222, 192, 222);
+    transition: 500ms;
+}
+
+@media (max-width: 1200px) {
+    #heading-group h2 {
+        font-weight: 100;
+        font-size: 3rem;
+    }
+}
+
