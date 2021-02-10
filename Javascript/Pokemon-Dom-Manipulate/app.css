@@ -1,0 +1,21 @@
+* {
+    background-color: darkkhaki;
+}
+
+h1{
+    font-size: 3rem;
+    font-style: oblique;
+    color:brown;
+    text-align: center;
+    text-decoration: wavy;
+}
+
+.pokemonz {
+    display: inline-block;
+    text-align: center;
+}
+
+.pokemonz img{
+    display: block;
+}
+
