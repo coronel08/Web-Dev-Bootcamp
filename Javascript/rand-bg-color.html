@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <button>Click me</button>
+    <p style="text-align:center">Uses QuerySelector, and addEventListener to change background color</p>
+    <p>Uses bad practices like inline javascript and styles. </p>
+
+    <!-- Javascript, uses Event Listener and makeColor to change background -->
+    <script>
+        function makeColor(){
+            const r = Math.floor(Math.random() * 255)
+            const g = Math.floor(Math.random() * 255)
+            const b = Math.floor(Math.random() * 255)
+            return `rgb(${r},${g},${b})`
+        }
+
+        let header = document.querySelector('h1')
+        let button = document.querySelector('button')
+        button.addEventListener('click',() =>{
+            document.body.style.backgroundColor = makeColor()
+            header.innerText =  makeColor()
+        })
+
+
+        // this used in section below, dont have to call makeColor again
+        function colorize(){
+            this.style.backgroundColor = makeColor()
+        }
+
+        // adds a loop of buttons, listener calls colirize function using this
+        for (let i = 0; i < 5; i++){
+            let buttonLoop = document.createElement("button")
+            buttonLoop.innerText = `#${i} Loop`
+            buttonLoop.addEventListener('click', colorize)
+            button.parentElement.append(buttonLoop)
+
+        }
+    </script>
+</body>
+</html>
