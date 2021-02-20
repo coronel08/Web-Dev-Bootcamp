@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Basics</title>
+</head>
+<body>
+    <div class="form">
+        <h1>Form Events</h1>
+        <form action="" id="tweetForm">
+            <label for="username">Enter Username</label>
+            <input type="text" name="username" placeholder="username">
+            <label for="tweet">Enter Tweet</label>
+            <input type="text" name="tweet" placeholder="tweet">
+            <button>Tweet</button>
+        </form>        
+    </div>
+
+    <h2>Tweets</h2>
+    <ul id="tweets">
+
+    </ul>
+
+
+    <script>
+        const tweetsContainer = document.querySelector('#tweets')
+        const tweetForm = document.querySelector('#tweetForm')
+        tweetForm.addEventListener('submit', e => {
+            e.preventDefault()
+            const user = tweetForm.elements.username
+            const tweet = tweetForm.elements.tweet
+            addTweet(user.value, tweet.value)
+            user.value = ''
+            tweet.value = ''
+        })
+
+        const addTweet = (user, tweet) => {
+            const newTweet = document.createElement('li')
+            const bTag = document.createElement('b')
+
+            bTag.append(user)
+            newTweet.append(bTag)
+            newTweet.append(` - "${tweet}"`)
+            tweetsContainer.append(newTweet)
+        }
+    </script>
+</body>
+</html>
