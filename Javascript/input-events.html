@@ -45,6 +45,12 @@
             newTweet.append(` - "${tweet}"`)
             tweetsContainer.append(newTweet)
         }
+
+        // Delete Tweets by clicking on them, checks to see if it is a 'li' item
+        tweetsContainer.addEventListener('click', e => {
+            // console.dir(e.target)
+            e.target.nodeName === 'LI' && e.target.remove()
+        })
     </script>
 </body>
 </html>
