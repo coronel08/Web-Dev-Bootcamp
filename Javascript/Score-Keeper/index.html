@@ -5,6 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Inline Styling for html -->
+    <style>
+        .winner{
+            color: green;
+        }
+        .loser{
+            color: red;
+        }
+        body{
+            display:flex;
+            justify-content: center;
+            margin-top: 150px;
+        }
+    </style>
 </head>
 <body>
     <!-- HTML Section -->
@@ -40,41 +54,50 @@
         let winningScore = 5
         let gameOver = false
         
-        // Set Winning Score
+        // Set Winning Score variable
         goalSelector.addEventListener('change', () => {
             winningScore = parseInt(goalSelector.value)
             reset()
         })
 
-        // 
+        // player 1 logic
         p1Button.addEventListener('click', () => {
             if (! gameOver){
                 p1Count ++
                 if (p1Count === winningScore){
                     gameOver = true
+                    p1Score.classList.add('winner')
+                    p2Score.classList.add('loser')
                 }
                 p1Score.textContent = p1Count    
             }
         })
 
+        // player 2 logic
         p2Button.addEventListener('click', () => {
             if (! gameOver){
                 p2Count ++
                 if (p2Count === winningScore){
                     gameOver = true
+                    p2Score.classList.add('winner')
+                    p1Score.classList.add('loser')
                 }
                 p2Score.textContent = p2Count    
             }
         })
 
+
         resetButton.addEventListener('click', reset) 
         
+        // Create reset function so i can reuse
         function reset(){
             gameOver = false
             p1Count = 0
             p2Count = 0
             p1Score.textContent = p1Count
             p2Score.textContent = p2Count
+            p1Score.classList.remove('winner','loser')
+            p2Score.classList.remove('winner','loser')
         }
         
     </script>
