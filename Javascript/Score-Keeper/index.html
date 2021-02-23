@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- HTML Section -->
+    <h1><span id="p1Score">0</span> to <span id="p2Score">0</span></h1>
+    <div>
+        <label for="goal">Goal: </label>
+        <select name="goal" id="goal">
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </div>
+    <button id="p1Button">Player One +1</button>
+    <button id="p2Button">Player Two +1</button>
+    <button id="resetButton">Reset</button>
+
+    <!-- Javascript Section -->
+    <script>
+        // Selectors
+        const p1Button = document.querySelector('#p1Button')
+        const p2Button = document.querySelector('#p2Button')
+        const resetButton = document.querySelector('#resetButton')
+        const p1Score = document.querySelector('#p1Score')
+        const p2Score = document.querySelector('#p2Score')
+        const goalSelector = document.querySelector('#goal')
+
+        // Creating Variables for game and score
+        let p1Count = 0
+        let p2Count = 0
+        let winningScore = 5
+        let gameOver = false
+        
+        // Set Winning Score
+        goalSelector.addEventListener('change', () => {
+            winningScore = parseInt(goalSelector.value)
+            reset()
+        })
+
+        // 
+        p1Button.addEventListener('click', () => {
+            if (! gameOver){
+                p1Count ++
+                if (p1Count === winningScore){
+                    gameOver = true
+                }
+                p1Score.textContent = p1Count    
+            }
+        })
+
+        p2Button.addEventListener('click', () => {
+            if (! gameOver){
+                p2Count ++
+                if (p2Count === winningScore){
+                    gameOver = true
+                }
+                p2Score.textContent = p2Count    
+            }
+        })
+
+        resetButton.addEventListener('click', reset) 
+        
+        function reset(){
+            gameOver = false
+            p1Count = 0
+            p2Count = 0
+            p1Score.textContent = p1Count
+            p2Score.textContent = p2Count
+        }
+        
+    </script>
+</body>
+</html>
