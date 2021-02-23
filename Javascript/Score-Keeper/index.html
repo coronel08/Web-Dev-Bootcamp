@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Import bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <!-- Inline Styling for html -->
     <style>
         .winner{
@@ -40,64 +42,64 @@
 
     <!-- Javascript Section -->
     <script>
-        // Selectors
-        const p1Button = document.querySelector('#p1Button')
-        const p2Button = document.querySelector('#p2Button')
+        // Selectors turned into Object key/value
+        const p1 = {
+            score: 0,
+            button: document.querySelector('#p1Button'),
+            display: document.querySelector('#p1Score'),
+        }
+        const p2 = {
+            score: 0,
+            button: document.querySelector('#p2Button'),
+            display: document.querySelector('#p2Score'),
+        }
+        // Selectors for other buttons
         const resetButton = document.querySelector('#resetButton')
-        const p1Score = document.querySelector('#p1Score')
-        const p2Score = document.querySelector('#p2Score')
         const goalSelector = document.querySelector('#goal')
 
         // Creating Variables for game and score
-        let p1Count = 0
-        let p2Count = 0
         let winningScore = 5
         let gameOver = false
         
-        // Set Winning Score variable
+        // Function refractored to reduce repeating code, Logic of game
+        function updateScores(player,opponent){
+            if (! gameOver){
+                player.score ++
+                if (player.score === winningScore){
+                    gameOver = true
+                    player.display.classList.add('winner')
+                    opponent.display.classList.add('loser')
+                }
+                player.display.textContent = player.score  
+            }
+        } 
+
+        // Set Winning Score input variable
         goalSelector.addEventListener('change', () => {
             winningScore = parseInt(goalSelector.value)
             reset()
         })
 
-        // player 1 logic
-        p1Button.addEventListener('click', () => {
-            if (! gameOver){
-                p1Count ++
-                if (p1Count === winningScore){
-                    gameOver = true
-                    p1Score.classList.add('winner')
-                    p2Score.classList.add('loser')
-                }
-                p1Score.textContent = p1Count    
-            }
+        // Player 1 logic
+        p1.button.addEventListener('click', () => {
+            updateScores(p1,p2)
         })
 
         // player 2 logic
-        p2Button.addEventListener('click', () => {
-            if (! gameOver){
-                p2Count ++
-                if (p2Count === winningScore){
-                    gameOver = true
-                    p2Score.classList.add('winner')
-                    p1Score.classList.add('loser')
-                }
-                p2Score.textContent = p2Count    
-            }
+        p2.button.addEventListener('click', () => {
+            updateScores(p2,p1)
         })
 
-
         resetButton.addEventListener('click', reset) 
-        
         // Create reset function so i can reuse
         function reset(){
             gameOver = false
-            p1Count = 0
-            p2Count = 0
-            p1Score.textContent = p1Count
-            p2Score.textContent = p2Count
-            p1Score.classList.remove('winner','loser')
-            p2Score.classList.remove('winner','loser')
+            // Refractored into Loop 
+            for(let p of [p1, p2]){
+                p.score = 0
+                p.display.textContent = 0
+                p.display.classList.remove('winner', 'loser')
+            }
         }
         
     </script>
