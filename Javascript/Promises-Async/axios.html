@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>Tv Show Search</h1>
+    <form id="searchForm">
+        <input type="text" placeholder="Tv Show title" name="query">
+        <button>Search</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('#searchForm')
+        form.addEventListener('click', async (e) =>{
+            e.preventDefault()
+            // Use dir to see where value of input is
+            // console.dir(form)
+            const searchTerm = form.elements.query.value
+            const config = { params : { q : searchTerm}}
+            const response =  await axios.get('http://api.tvmaze.com/search/shows?q=', config)
+            getImgs(response.data)
+        })
+
+        // Function to get images from response and append to page
+        const getImgs = (shows) => {
+            for (let item of shows){
+                if (item.show.image){
+                    const img = document.createElement('IMG')
+                    img.src = item.show.image.medium
+                    document.body.append(img)
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
