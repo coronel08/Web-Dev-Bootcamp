@@ -1,3 +1,4 @@
+// Used to populate the database quickly just node run this file
 const mongoose = require('mongoose')
 const Product = require('./models/product')
 
