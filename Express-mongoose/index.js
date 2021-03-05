@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended:true}))
 // set methodOverride so we can use Put method
 app.use(methodOverride('_method'))
 // create categories for new.ejs and edit.ejs loop
-const categories = ['fruit', 'vegetable', 'dairy']
+const categories = ['Fruit', 'Vegetable', 'Dairy']
 
 mongoose.connect('mongodb://root:example@localhost:27017/farmStand?authSource=admin',
     {useNewUrlParser:true, useUnifiedTopology:true})
@@ -29,8 +29,16 @@ app.get('/',(req, res) => {
 
 // passes all products from db into the products/index.ejs
 app.get('/products', async (req,res) => {
-    const products = await Product.find({})
-    res.render('products/index', {products})
+    // Added if/else to filter query given in URL from id.ejs category
+    const {category} = req.query
+    if (category){
+        // can be shorthanded to .find({category})
+        const products = await Product.find({category : category})
+        res.render('products/index', {products, category})
+    } else {
+        const products = await Product.find({})
+        res.render('products/index', {products, category: 'All'})
+    }
 })
 
 // Input form for new products
