@@ -12,7 +12,8 @@ db.once('open', () => {
     console.log('Database connected')
 })
 
-const sample = array => array[Math.floor(Math.random() * 1000)]
+// function used to create random titles for camp, used below
+const sample = array => array[Math.floor(Math.random() * array.length)]
 
 // Delete data in Campground, and make new random data
 const seedDB = async () => {
