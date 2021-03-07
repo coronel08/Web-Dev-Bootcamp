@@ -9,7 +9,7 @@ mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=ad
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
-    console.log('Database connected')
+    console.log('Database seeded information succesfully')
 })
 
 // function used to create random titles for camp, used below
@@ -22,7 +22,10 @@ const seedDB = async () => {
         const random1000 = Math.floor(Math.random() * 1000)
         const camp = new Campground({
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
-            title: `${sample(descriptors)} ${sample(places)}`
+            title: `${sample(descriptors)} ${sample(places)}`,
+            image: 'https://source.unsplash.com/collection/483251/',
+            description: 'Lorem Ipsum',
+            price: random1000
         })
         await camp.save()
     }

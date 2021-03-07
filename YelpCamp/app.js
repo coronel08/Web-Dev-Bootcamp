@@ -4,12 +4,14 @@ const path = require('path')
 const mongoose = require('mongoose')
 const Campground = require('./models/campground')
 const methodOverride = require('method-override') 
+const ejsMate = require('ejs-mate')
 
+app.engine('ejs',ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
-// used to parse app.post path req.body 
+// app.use is middleware used to parse app.post path req.body 
 app.use(express.urlencoded({ extended:true }))
-// use methodOverride to patch and delete 
+// app.use is middleware used methodOverride to patch and delete 
 app.use(methodOverride('_method'))
 
 mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=admin',

@@ -9,11 +9,11 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
 
 
 ## Table of Contents
-* [Resources](#resources)
+* [Structure](#structure)
 * [ToDo](#todo)
 
 
-### Resources
+### Structure
 
 
 ### Todo
@@ -21,5 +21,7 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
 * [x] npm i express mongoose ejs
 * [x] create app.js /views/home.ejs README.md
 * [x] set app.js view engine to 
-* [] Mongoose model for yelp campground in models/campground.js
-    * [] seed data into model
+* [x] Mongoose model for yelp campground in models/campground.js
+    * [x] seed data into model
+* [] Style frontend
+    * [] 

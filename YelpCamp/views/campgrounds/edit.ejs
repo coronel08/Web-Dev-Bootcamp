@@ -1,27 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Campgrouns</title>
-</head>
-<body>
-    <h1>Edit Campground</h1>
-    <div>
+<% layout('layouts/boilerplate') %> 
+<body class="row">
+    <h1 class="text-center">Edit Campground</h1>
+    <div class="col-6 offset-3">
         <!-- Use method-override to PUT -->
         <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
-            <div>
-                <label for="title">Title</label>
-                <input type="text" id="title" name="campground[title]" value="<%=campground.title%> ">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campground.title%>">
             </div>
-            <div>
-                <label for="location">Location</label>
-                <input type="text" id="location" name="campground[location]" value="<%=campground.location%> ">
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="campground[location]" value="<%=campground.location%>">
             </div>
-            <button>Submit Campground</button>
+            <div class="mb-3">
+                <label class="form-label" for="image">Image URL</label>
+                <input class="form-control" type="text" id="image" name="campground[image]" value="<%=campground.image%>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Price</label>
+                <input class="form-control" type="number" id="price" name="campground[price]" value="<%=campground.price%>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" name="campground[description]" id="description" type="text" rows="3"><%=campground.description%></textarea>
+            </div>
+            <button class="btn btn-primary">Submit Campground</button>
         </form>
-        <a href="/campgrounds/<%=campground._id%> ">Back to Campgrounds</a>
+        <a class="btn btn-success my-3" href="/campgrounds/<%=campground._id%> ">Back to Campgrounds</a>
     </div>
 </body>
 </html>
