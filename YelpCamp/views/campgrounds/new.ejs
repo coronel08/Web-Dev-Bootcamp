@@ -1,32 +1,38 @@
 <% layout('layouts/boilerplate') %> 
 
-<div class="row">
+<div class="container">
     <h1 class="text-center"> New Campground </h1>
-    <div class="col-6 offset-3">
+    <div class="col-8 offset-2">
         <form action="/campgrounds" method="POST">
-            <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
-                <input class="form-control" type="text" id="title" name="campground[title]">
+            <div class="row">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]">
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]">
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="image">Image URL</label>
+                    <input class="form-control" type="text" id="image" name="campground[image]">
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="location">Location</label>
-                <input class="form-control" type="text" id="location" name="campground[location]">
+            <div class="row">
+                <div class="mb-3 form-group col">
+                    <label class="form-label" for="price">Price</label>
+                    <input class="form-control" type="number" id="price" name="campground[price]">
+                </div>
+                <div class="mb-3 form-group col">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" name="campground[description]" id="description" rows="3" type="text"></textarea>
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="image">Image URL</label>
-                <input class="form-control" type="text" id="image" name="campground[image]">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="price">Price</label>
-                <input class="form-control" type="number" id="price" name="campground[price]">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <textarea class="form-control" name="campground[description]" id="description" rows="3" type="text"></textarea>
-            </div>
-            <button class="btn btn-primary">Add Campground</button>
+            <span>
+                <button class="btn btn-primary m-md-3">Add Campground</button>
+                <a class="btn btn-success m-md-3" href="/campgrounds">All Campgrounds</a>
+            </span>
         </form>
-        <a class="btn btn-success my-3" href="/campgrounds">All Campgrounds</a>
     </div>
 </div>
 
