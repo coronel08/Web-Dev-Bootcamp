@@ -6,11 +6,11 @@
             <img src="<%= campground.image %>" class="card-img-top mh-25" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= campground.title %> Campground</h5>
-              <p class="card-text"><%= campground.description %></p>
+              <p class="card-text"><span class="text-muted">Campground Description: </span> <%= campground.description %></p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item text-muted"><%= campground.location %></li>
-              <li class="list-group-item"><%= campground.price %></li>
+              <li class="list-group-item">Location: <%= campground.location %></li>
+              <li class="list-group-item">Price: $<%= campground.price %></li>
             </ul>
             <div class="card-body">
                 <a href="/campgrounds" class="card-link btn btn-info">All Campgrounds</a>
