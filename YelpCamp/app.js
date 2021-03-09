@@ -7,12 +7,14 @@ const Review = require('./models/review')
 const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
 const { nextTick } = require('process')
+
 // error handling 
 const wrapAsync = require('./utils/wrapAsync')
 const ExpressError = require('./utils/ExpressError')
-const { campgroundSchema } = require('./schema')
+const { campgroundSchema, reviewSchema } = require('./schema')
 const campground = require('./models/campground')
 module.exports.campgroundSchema
+
 // Joi library, error checking mongoose, validation on server side
 const validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body)
@@ -23,6 +25,17 @@ const validateCampground = (req, res, next) => {
         next()
     }
 }
+
+const validateReview = (req, res, next) => {
+    const {error} = reviewSchema.validate(req.body)
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next()
+    }
+}
+
 
 // Middleware for views engine
 app.engine('ejs', ejsMate)
@@ -92,7 +105,7 @@ app.delete('/campgrounds/:id', wrapAsync(async (req, res) => {
 }))
 
 // Path/route for posting review from show.ejs
-app.post('/campgrounds/:id/reviews', wrapAsync(async (req, res) => {
+app.post('/campgrounds/:id/reviews', validateReview, wrapAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id)
     const review = new Review(req.body.review)
     campground.reviews.push(review)
