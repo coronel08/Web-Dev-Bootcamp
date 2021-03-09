@@ -15,7 +15,7 @@ venv\Scripts\activate
 
 ## Table of Contents
 * [Todo](#todo)
-* [Project Setup](#projeect-setup)
+* [Project Setup](#project-setup)
 
 
 ## Todo

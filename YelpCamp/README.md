@@ -23,5 +23,10 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
 * [x] set app.js view engine to 
 * [x] Mongoose model for yelp campground in models/campground.js
     * [x] seed data into model
-* [] Style frontend
-    * [] 
+* [x] Style frontend using ejs
+    * [x] create views for campgrounds, layouts, partial
+    * [x] use bootstrap to stylize the page
+* [x] Setup client and server side validation
+    * [x] Use bootstrap for validation handling
+    * [x] make wrapper and error files in utils. Used in app.js
+    * [x] Use JOI schema to validate server side
