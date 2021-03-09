@@ -30,3 +30,7 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
     * [x] Use bootstrap for validation handling
     * [x] make wrapper and error files in utils. Used in app.js
     * [x] Use JOI schema to validate server side
+* [x] Add Rating system 
+    * [x] Create review schema in models folder, use one to many relation to campgrounds schema
+    * [x] Create review form in show.ejs 
+    * [x] Create reviews post path/route to receive information from show.ejs and push review to campground 
