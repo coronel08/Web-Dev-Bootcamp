@@ -3,14 +3,16 @@ const app = express()
 const path = require('path')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
-
-// Import routes/paths 
-const campgrounds = require('./routes/campgrounds')
-const reviews = require('./routes/reviews')
+const session = require('express-session')
+const flash = require('connect-flash')
 
 // Ejsmate imported to handle ejs partials in template
 const ejsMate = require('ejs-mate')
 const { nextTick } = require('process')
+
+// Import routes/paths 
+const campgrounds = require('./routes/campgrounds')
+const reviews = require('./routes/reviews')
 
 // error handling 
 const wrapAsync = require('./utils/wrapAsync')
@@ -22,10 +24,33 @@ module.exports.campgroundSchema
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
-// app.use is middleware used to parse app.post path req.body 
+// Middleware for static folder
+app.use(express.static(path.join(__dirname,'public')))
+// Middleware used to parse app.post path req.body 
 app.use(express.urlencoded({ extended: true }))
-// app.use is middleware used methodOverride to patch and delete 
+// Middleware used methodOverride to patch and delete 
 app.use(methodOverride('_method'))
+// Middleware for session
+const sessionConfig = {
+    secret: 'thissecret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig))
+// Flash middleware
+app.use(flash())
+// Custom middleware for flash route/path, called in routes/campgrounds.js in .post
+app.use((req, res, next) =>{
+    res.locals.success = req.flash('success')
+    res.locals.error = req.flash('error')
+    next()
+})
+
 
 mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=admin',
     { 
@@ -45,7 +70,6 @@ mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=ad
 app.use('/campgrounds', campgrounds)
 // Route for reviews
 app.use('/campgrounds/:id/reviews', reviews)
-app.use(express.static(path.join(__dirname,'public')))
 
 // Just making a response for landing page
 app.get('/', (req, res) => {

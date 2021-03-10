@@ -34,6 +34,7 @@ router.get('/new', (req, res) => {
 router.post('/', validateCampground, wrapAsync(async (req, res, next) => {
     const campground = new Campground(req.body.campground)
     await campground.save()
+    req.flash('success', 'Successfully made a new campground!')
     res.redirect(`/campgrounds/${campground.id}`)
 }))
 
@@ -49,11 +50,12 @@ router.get('/:id/edit', wrapAsync(async (req, res) => {
     res.render(`campgrounds/edit`, { campground })
 }))
 
-// Path to accept edit information
+// Path to update edit information on campground
 router.put('/:id', validateCampground, wrapAsync(async (req, res) => {
     const { id } = req.params
     // take spread of object from req.body.campground in edit.ejs form
     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground })
+    req.flash('success', 'Succesfully updated campground')
     res.redirect(`/campgrounds/${campground._id}`)
 }))
 
