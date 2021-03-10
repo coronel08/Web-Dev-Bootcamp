@@ -34,3 +34,4 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
     * [x] Create review schema in models folder, use one to many relation to campgrounds schema
     * [x] Create review form in show.ejs 
     * [x] Create reviews post path/route to receive information from show.ejs and push review to campground 
+    * [x] show ratings in campgrpunds, populate reviews
