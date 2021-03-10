@@ -3,8 +3,6 @@ const app = express()
 const path = require('path')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
-// Mongoose delete settings, used in review delete path/route
-mongoose.set('useFindAndModify', false);
 
 // Import routes/paths 
 const campgrounds = require('./routes/campgrounds')
@@ -30,7 +28,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 
 mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=admin',
-    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+    { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true, 
+        useCreateIndex: true,
+        // Mongoose delete settings, used in review delete path/route
+        useFindAndModify:false
+    })
     .then(() => {
         console.log("Connection to MongoDB worked")
     }).catch(err => {
@@ -41,6 +45,7 @@ mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=ad
 app.use('/campgrounds', campgrounds)
 // Route for reviews
 app.use('/campgrounds/:id/reviews', reviews)
+app.use(express.static(path.join(__dirname,'public')))
 
 // Just making a response for landing page
 app.get('/', (req, res) => {
