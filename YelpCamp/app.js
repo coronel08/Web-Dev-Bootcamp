@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const Campground = require('./models/campground')
 const Review = require('./models/review')
 const methodOverride = require('method-override')
+
 const ejsMate = require('ejs-mate')
 const { nextTick } = require('process')
 
@@ -15,7 +16,7 @@ const { campgroundSchema, reviewSchema } = require('./schema')
 const campground = require('./models/campground')
 module.exports.campgroundSchema
 
-// Joi library, error checking mongoose, validation on server side
+// Joi library, error checking for adding campgrounds, validation on server side
 const validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body)
     if (error) {
@@ -26,6 +27,7 @@ const validateCampground = (req, res, next) => {
     }
 }
 
+// Joi library, error checking for reviews
 const validateReview = (req, res, next) => {
     const {error} = reviewSchema.validate(req.body)
     if (error) {
@@ -36,6 +38,8 @@ const validateReview = (req, res, next) => {
     }
 }
 
+// Mongoose delete settings, used in review delete path/route
+mongoose.set('useFindAndModify', false);
 
 // Middleware for views engine
 app.engine('ejs', ejsMate)
@@ -105,7 +109,7 @@ app.delete('/campgrounds/:id', wrapAsync(async (req, res) => {
 }))
 
 // Path/route for posting review from show.ejs
-app.post('/campgrounds/:id/reviews', validateReview, wrapAsync(async (req, res) => {
+app.post('/campgrounds/:id/reviews', validateReview, wrapAsync(async(req, res) => {
     const campground = await Campground.findById(req.params.id)
     const review = new Review(req.body.review)
     campground.reviews.push(review)
@@ -114,6 +118,14 @@ app.post('/campgrounds/:id/reviews', validateReview, wrapAsync(async (req, res) 
     res.redirect(`/campgrounds/${campground._id}`)
 })
 )
+
+// delete path/route for reviews
+app.delete('/campgrounds/:id/reviews/:reviewId', wrapAsync(async(req,res) => {
+    const {id, reviewId} = req.params
+    await Campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId}})
+    await Review.findByIdAndDelete(reviewId)
+    res.redirect(`/campgrounds/${id}`)
+}))
 
 // Middleware for 404 
 app.all('*', (req, res, next) => {
