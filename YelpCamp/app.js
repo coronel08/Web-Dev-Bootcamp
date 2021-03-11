@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
+const User = require('./models/user')
 
 // Ejsmate imported to handle ejs partials in template
 const ejsMate = require('ejs-mate')
@@ -44,6 +47,14 @@ const sessionConfig = {
 app.use(session(sessionConfig))
 // Flash middleware
 app.use(flash())
+
+// passport for authentication and session
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()))
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
 // Custom middleware for flash route/path, called in routes/campgrounds.js in .post
 // Middleware always needs next so that it can chain and work
 app.use((req, res, next) =>{
@@ -65,6 +76,13 @@ mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=ad
         console.log("Connection to MongoDB worked")
     }).catch(err => {
         console.log('We have an error ', err)
+})
+
+// Delete this, just to test out
+app.get('/makeUser', async (req,res) => {
+    const user = new User({email:'fakeemail@gmail.com', username:'fakeUser'})
+    const newUser = await User.register(user,'fakepassword')
+    res.send(newUser)
 })
 
 // Route for campgrounds, prepend /campgrounds, imported from routes/campgrounds
