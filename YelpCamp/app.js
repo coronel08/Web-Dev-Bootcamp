@@ -45,6 +45,7 @@ app.use(session(sessionConfig))
 // Flash middleware
 app.use(flash())
 // Custom middleware for flash route/path, called in routes/campgrounds.js in .post
+// Middleware always needs next so that it can chain and work
 app.use((req, res, next) =>{
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
