@@ -56,8 +56,8 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-// Custom middleware for flash route/path, called in routes/campgrounds.js in .post
-// Middleware always needs next so that it can chain and work
+// Custom middleware for flash route/path, called in routes/campgrounds.js in router.post
+// Middleware always needs next so that chain and work. Can use in every route as req.flash
 app.use((req, res, next) =>{
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
