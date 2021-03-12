@@ -14,8 +14,9 @@ const ejsMate = require('ejs-mate')
 const { nextTick } = require('process')
 
 // Import routes/paths 
-const campgrounds = require('./routes/campgrounds')
-const reviews = require('./routes/reviews')
+const userRoutes = require('./routes/users')
+const campgroundRoutes = require('./routes/campgrounds')
+const reviewRoutes = require('./routes/reviews')
 
 // error handling 
 const wrapAsync = require('./utils/wrapAsync')
@@ -85,10 +86,11 @@ app.get('/makeUser', async (req,res) => {
     res.send(newUser)
 })
 
+app.use('/', userRoutes)
 // Route for campgrounds, prepend /campgrounds, imported from routes/campgrounds
-app.use('/campgrounds', campgrounds)
+app.use('/campgrounds', campgroundRoutes)
 // Route for reviews
-app.use('/campgrounds/:id/reviews', reviews)
+app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 // Just making a response for landing page
 app.get('/', (req, res) => {
