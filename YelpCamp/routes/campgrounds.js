@@ -6,7 +6,7 @@ const { campgroundSchema } = require('../schema')
 // erro handling
 const wrapAsync = require('../utils/wrapAsync')
 const ExpressError = require('../utils/ExpressError')
-
+const { isLoggedIn } = require('../middleware')
 
 // Joi library, error checking for adding campgrounds, validation on server side
 const validateCampground = (req, res, next) => {
@@ -26,12 +26,12 @@ router.get('/', async (req, res) => {
 })
 
 // Add new campground route from form in campgrounds/new.ejs
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     res.render('campgrounds/new')
 })
 
 // Added app.use express url encoded to be able to parse req.body
-router.post('/', validateCampground, wrapAsync(async (req, res, next) => {
+router.post('/', isLoggedIn, validateCampground, wrapAsync(async (req, res, next) => {
     const campground = new Campground(req.body.campground)
     await campground.save()
     req.flash('success', 'Successfully made a new campground!')
@@ -41,15 +41,15 @@ router.post('/', validateCampground, wrapAsync(async (req, res, next) => {
 // Display a camgrounds detail by using id
 router.get('/:id', wrapAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id).populate('reviews')
-    if (!campground){
-        req.flash('error','Can Not find campground')
+    if (!campground) {
+        req.flash('error', 'Can Not find campground')
         return res.redirect('/campgrounds')
     }
     res.render('campgrounds/show', { campground })
 }))
 
 // Edit path/route form
-router.get('/:id/edit', wrapAsync(async (req, res) => {
+router.get('/:id/edit', isLoggedIn, wrapAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id)
     res.render(`campgrounds/edit`, { campground })
 }))
@@ -64,7 +64,7 @@ router.put('/:id', validateCampground, wrapAsync(async (req, res) => {
 }))
 
 // Delete path/route
-router.delete('/:id', wrapAsync(async (req, res) => {
+router.delete('/:id',isLoggedIn, wrapAsync(async (req, res) => {
     const { id } = req.params
     await Campground.findByIdAndDelete(id)
     res.redirect('/campgrounds')
