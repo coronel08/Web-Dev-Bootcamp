@@ -37,3 +37,19 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
     * [x] show ratings in campgrpunds, populate reviews in one to many schema in app.js
     * [x] create delete path/route for reviews
     * [x] add middleware for deleting associated reviews to a campground
+* [x] Express Router and Cookies
+    * [x] Split paths/routes into /routes
+    * [x] Add Cookies and Signing Cookies
+* [x] Add Session and Flash
+    * [x] Add middleware for session and flash 
+    * [x] Create a public route for static content
+* [x] Add authentication with passport
+    - [x] Create /models/user.js and store schema for adding user
+    - [x] Create register path and postand add logic
+    - [x] isLoggedIn Middleware 
+    - [x] logout path aand logic added and fix navbar with new user paths.
+    - [x] ReturnTo behavior, and register also logs in user
+* [x] Fix authentication behavior to tie in with author
+    * [x] add author to route for add campgrounds
+    * [x] Show Campground by id View, hide if user doesnt match author 
+* [x] Star Ratings
