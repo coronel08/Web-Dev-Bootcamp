@@ -57,5 +57,5 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
     * [x] Add same author != user to Reviews. Hide leave a review if no user signed in. 
         * [x] When creating a review review.author = req.user._id
         * [x] Review.js schema added author
-    * [x] 
+        * [x] Populate review author in routes/campgrounds.js, create middleware for isReviewAuthor and use it in reviews 
 * [x] Star Ratings
