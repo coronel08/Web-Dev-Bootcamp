@@ -4,15 +4,16 @@ const router = express.Router({mergeParams:true})
 // Import models and schema and validateReview middleware
 const Campground = require('../models/campground')
 const Review = require('../models/review')
-const {validateReview} = require('../middleware')
+const {validateReview, isLoggedIn} = require('../middleware')
 // Error handling wrapper
 const wrapAsync = require('../utils/wrapAsync')
 
 
 // Path/route for posting review from show.ejs
-router.post('/', validateReview, wrapAsync(async(req, res) => {
+router.post('/', isLoggedIn, validateReview, wrapAsync(async(req, res) => {
     const campground = await Campground.findById(req.params.id)
     const review = new Review(req.body.review)
+    review.author = req.user._id
     campground.reviews.push(review)
     await review.save()
     await campground.save()

@@ -52,4 +52,10 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
 * [x] Fix authentication behavior to tie in with author
     * [x] add author to route for add campgrounds
     * [x] Show Campground by id View, hide if user doesnt match author 
+    * [x] If user doesnt match author give req.flash error and redirect. Need to move into its own middleware next
+    * [x] Moved all middlewares from routes into middleware.js and cleaned routes path
+    * [x] Add same author != user to Reviews. Hide leave a review if no user signed in. 
+        * [x] When creating a review review.author = req.user._id
+        * [x] Review.js schema added author
+    * [x] 
 * [x] Star Ratings

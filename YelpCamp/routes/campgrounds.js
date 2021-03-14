@@ -17,6 +17,7 @@ router.get('/new', isLoggedIn, (req, res) => {
     res.render('campgrounds/new')
 })
 
+// Post route to create new Campground from form. 
 // Added app.use express url encoded to be able to parse req.body
 router.post('/', isLoggedIn, validateCampground, wrapAsync(async (req, res, next) => {
     const campground = new Campground(req.body.campground)
