@@ -13,7 +13,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes: 
-      - C:\Users\Karina\Documents\code\Web-Dev-Bootcamp-Colt-Steele\MongoDB\.devcontainer\storage:/data/db
+      - D:\code\Web-Dev-Bootcamp-Colt-Steele\MongoDB\.devcontainer\storage:/data/db
 
   mongo-express:
     image: mongo-express
