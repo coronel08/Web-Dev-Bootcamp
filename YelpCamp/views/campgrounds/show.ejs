@@ -56,14 +56,20 @@
                 <div>
                     <% for (let review of campground.reviews) { %>
                         <div class="card mb-1">
-                            <p class="card-body p-1 mb-0">Rating: <%= review.rating %> <br> Description: <%= review.body
-                                        %>
+                            <p class="card-body p-1 mb-0">
+                                <h5 class="card-title">Rating: <%= review.rating %></h5> 
+                                <h6 class="card-subtitle">User: <%= review.author.username %></h6>  
+                                <div>
+                                    Description: <%= review.body%>
+                                </div>
                             </p>
-                            <!-- Override method to Delete review -->
-                            <form action="/campgrounds/<%= campground._id %>/reviews/<%= review._id %>?_method=DELETE"
-                                method="POST">
-                                <button class="btn btn-danger mb-1 mx-1">Delete</button>
-                            </form>
+                            <!-- Override method to Delete review, hide if user is not logged in -->
+                            <% if(currentUser && review.author.equals(currentUser._id)) { %> 
+                                <form action="/campgrounds/<%= campground._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                    method="POST">
+                                    <button class="btn btn-danger mb-1 mx-1">Delete</button>
+                                </form>
+                            <% } %> 
                         </div>
                         <% } %>
                 </div>

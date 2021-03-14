@@ -4,7 +4,7 @@ const router = express.Router({mergeParams:true})
 // Import models and schema and validateReview middleware
 const Campground = require('../models/campground')
 const Review = require('../models/review')
-const {validateReview, isLoggedIn} = require('../middleware')
+const {validateReview, isLoggedIn, isReviewAuthor} = require('../middleware')
 // Error handling wrapper
 const wrapAsync = require('../utils/wrapAsync')
 
@@ -23,11 +23,11 @@ router.post('/', isLoggedIn, validateReview, wrapAsync(async(req, res) => {
 )
 
 // delete path/route for reviews
-router.delete('/:reviewId', wrapAsync(async(req,res) => {
+router.delete('/:reviewId', isLoggedIn, isReviewAuthor, wrapAsync(async(req,res) => {
     const {id, reviewId} = req.params
     await Campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId}})
     await Review.findByIdAndDelete(reviewId)
-    res.flash('success','Succesfully removed a review')
+    req.flash('success','Succesfully removed a review')
     res.redirect(`/campgrounds/${id}`)
 }))
 
