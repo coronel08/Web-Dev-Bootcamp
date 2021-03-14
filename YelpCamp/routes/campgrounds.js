@@ -2,22 +2,9 @@ const express = require('express')
 const router = express.Router()
 // models and schema
 const Campground = require('../models/campground')
-const { campgroundSchema } = require('../schema')
 // erro handling
 const wrapAsync = require('../utils/wrapAsync')
-const ExpressError = require('../utils/ExpressError')
-const { isLoggedIn } = require('../middleware')
-
-// Joi library, error checking for adding campgrounds, validation on server side
-const validateCampground = (req, res, next) => {
-    const { error } = campgroundSchema.validate(req.body)
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next()
-    }
-}
+const { isLoggedIn, isAuthor, validateCampground } = require('../middleware')
 
 // Find all campgrounds and return a template that iterates over object
 router.get('/', async (req, res) => {
@@ -50,46 +37,31 @@ router.get('/:id', wrapAsync(async (req, res) => {
 }))
 
 // Edit path/route form
-router.get('/:id/edit', isLoggedIn, wrapAsync(async (req, res) => {
+router.get('/:id/edit', isLoggedIn, isAuthor, wrapAsync(async (req, res) => {
     const {id} = req.params
     const campground = await Campground.findById(id)
     if(!campground){
         req.flash('error','Cannot find that campground!')
         return res.redirect('/campgrounds')
     }
-    if(!campground.author.equals(req.user._id)){
-        req.flash('error','You are not authorized to edit someone elses post!')
-        return res.redirect(`/campgrounds/${id}`)
-    }
     res.render(`campgrounds/edit`, { campground })
 }))
 
 // Path to update edit information on campground
-router.put('/:id', isLoggedIn, validateCampground, wrapAsync(async (req, res) => {
+router.put('/:id', isLoggedIn, isAuthor, validateCampground, wrapAsync(async (req, res) => {
     const { id } = req.params
-    const campground = await Campground.findById(id)
-    if(!campground.author.equals(req.user._id)){
-        req.flash('error','Unauthorized action, unable to edit someone elses post')
-        return res.redirect(`/campgrounds/${id}`)
-    }
     // take spread of object from req.body.campground in edit.ejs form
-    const campEdit = await Campground.findByIdAndUpdate(id, { ...req.body.campground })
+    const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground })
     req.flash('success', 'Succesfully updated campground')
     res.redirect(`/campgrounds/${campground._id}`)
 }))
 
 // Delete path/route
-router.delete('/:id',isLoggedIn, wrapAsync(async (req, res) => {
+router.delete('/:id',isLoggedIn, isAuthor, wrapAsync(async (req, res) => {
     const { id } = req.params
-    const campground = await Campground.findById(id)
-    if(!campground.author.equals(req.user._id)){
-        req.flash('error','You do not have permission to delete someone elses post!')
-        return res.redirect(`/campgrounds/${id}`)
-    }
     await Campground.findByIdAndDelete(id)
     req.flash('success','Succesfully deleted campground!')
     res.redirect('/campgrounds')
 }))
-
 
 module.exports = router

@@ -1,24 +1,13 @@
 const express = require('express')
 // need to use mergeParams to be able to get review param/id when adding a new review
 const router = express.Router({mergeParams:true})
-// Import models and schema
+// Import models and schema and validateReview middleware
 const Campground = require('../models/campground')
 const Review = require('../models/review')
-const { reviewSchema } = require('../schema')
+const {validateReview} = require('../middleware')
 // Error handling wrapper
 const wrapAsync = require('../utils/wrapAsync')
 
-
-// Joi library, error checking for reviews
-const validateReview = (req, res, next) => {
-    const {error} = reviewSchema.validate(req.body)
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next()
-    }
-}
 
 // Path/route for posting review from show.ejs
 router.post('/', validateReview, wrapAsync(async(req, res) => {
