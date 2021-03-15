@@ -26,7 +26,7 @@ const seedDB = async () => {
             image: 'https://source.unsplash.com/collection/483251/',
             description: 'Lorem Ipsum',
             price: random1000,
-            author: '604de6dbbf62df1e087ff13c'
+            author: '604fda1ddd91d22464f03c9f'
         })
         await camp.save()
     }
