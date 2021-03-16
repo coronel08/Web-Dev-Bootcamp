@@ -7,6 +7,9 @@ const wrapAsync = require('../utils/wrapAsync')
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware')
 // controller import
 const campgrounds = require('../controllers/campgrounds')
+const multer = require('multer')
+const upload = multer({dest:'uploads/'})
+
 
 // Express has router.route that lets you chain onto paths, used instead of router.get
 
@@ -15,7 +18,10 @@ router.route('/')
     .get(wrapAsync(campgrounds.index))
     // Post route to create new Campground from form. 
     // in App.js Added app.use express url encoded to be able to parse req.body
-    .post(isLoggedIn, validateCampground, wrapAsync(campgrounds.createCampground))
+    // .post(isLoggedIn, validateCampground, wrapAsync(campgrounds.createCampground))
+    .post(upload.single('campground[image]'), (req,res) => {
+        res.send(req.body, req.file)
+    })
     
 // Add new campground form render route in views/campgrounds/new.ejs
 router.get('/new', isLoggedIn, campgrounds.renderNewForm)
