@@ -6,13 +6,15 @@ const wrapAsync = require('../utils/wrapAsync')
 // import controller for this view
 const users = require('../controllers/users')
 
-router.get('/register', users.renderRegister)
+router.route('/register')
+    .get( users.renderRegister)
+    .post( wrapAsync(users.registerUser))
 
-router.post('/register', wrapAsync(users.registerUser))
 
-router.get('/login', users.renderLogin)
+router.route('/login')
+    .get( users.renderLogin)
+    .post( passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), users.loginUser)
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), users.loginUser)
 
 router.get('/logout', users.logoutUser)
 
