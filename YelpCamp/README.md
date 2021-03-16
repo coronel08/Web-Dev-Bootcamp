@@ -61,3 +61,5 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
 * [x] Refractor to use models and router.route instead of router.get
 * [x] Add star ratings using [starability.css](https://github.com/LunarLogic/starability) in show.ejs, and using the rating scale input
 * [x] Add image upload to campgrounds using cloudinary
+    * [x] Create Cloudinaryconfig file and use it in routes/campground
+    * [x] Also npm i dotenv and store cloudinary info there, add conditional in app.js to see if in development mode or deployment.

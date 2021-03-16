@@ -8,7 +8,8 @@ const { isLoggedIn, isAuthor, validateCampground } = require('../middleware')
 // controller import
 const campgrounds = require('../controllers/campgrounds')
 const multer = require('multer')
-const upload = multer({dest:'uploads/'})
+const {storage} = require('../cloudinaryConfig')
+const upload = multer({storage})
 
 
 // Express has router.route that lets you chain onto paths, used instead of router.get
