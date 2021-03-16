@@ -58,4 +58,5 @@ The goal is to make a web app similar to yelp that allows campsites and rv parks
         * [x] When creating a review review.author = req.user._id
         * [x] Review.js schema added author
         * [x] Populate review author in routes/campgrounds.js, create middleware for isReviewAuthor and use it in reviews 
-* [x] Star Ratings
+* [x] Refractor to use models and router.route instead of router.get
+* [x] Add star ratings using [starability.css](https://github.com/LunarLogic/starability) in show.ejs, and using the rating scale input
