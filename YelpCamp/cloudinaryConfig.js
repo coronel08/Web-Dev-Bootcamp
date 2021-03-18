@@ -12,7 +12,6 @@ const storage = new CloudinaryStorage({
     params: {
         folder: 'Yelpcamp',
         allowedFormats: ['jpeg','png','jpg']
-
     }
 })
 

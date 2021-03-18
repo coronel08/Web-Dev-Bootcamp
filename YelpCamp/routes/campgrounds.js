@@ -1,7 +1,5 @@
 const express = require('express')
 const router = express.Router()
-// models/schema
-const Campground = require('../models/campground')
 // error handling
 const wrapAsync = require('../utils/wrapAsync')
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware')
@@ -19,10 +17,8 @@ router.route('/')
     .get(wrapAsync(campgrounds.index))
     // Post route to create new Campground from form. 
     // in App.js Added app.use express url encoded to be able to parse req.body
-    // .post(isLoggedIn, validateCampground, wrapAsync(campgrounds.createCampground))
-    .post(upload.single('campground[image]'), (req,res) => {
-        res.send(req.body, req.file)
-    })
+    .post(isLoggedIn, upload.array('campground[image]'), validateCampground, wrapAsync(campgrounds.createCampground))
+
     
 // Add new campground form render route in views/campgrounds/new.ejs
 router.get('/new', isLoggedIn, campgrounds.renderNewForm)

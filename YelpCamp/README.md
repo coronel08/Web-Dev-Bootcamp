@@ -5,7 +5,8 @@ This is the final project in the bootcamp using
 * MongoDB and Mongoose as a database
 
 
-The goal is to make a web app similar to yelp that allows campsites and rv parks to be reviewed and rated. 
+The goal is to make a web app similar to yelp that allows campsites and rv parks to be reviewed and rated. <br>
+Make sure to create .env file with our cloudlare information
 
 
 ## Table of Contents
