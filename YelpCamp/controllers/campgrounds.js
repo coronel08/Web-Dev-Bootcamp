@@ -14,7 +14,7 @@ module.exports.renderNewForm = (req, res) => {
 // Add new campground form render route in views/campgrounds/new.ejs
 module.exports.createCampground = async (req, res, next) => {
     const campground = new Campground(req.body.campground)
-    campground.images = req.files.map( f => ({ url: f.path, filename: f.filename }))
+    campground.images = req.files.map( f => ({ url:f.path, filename:f.filename }))
     campground.author = req.user._id
     await campground.save()
     req.flash('success', 'Successfully made a new campground!')
@@ -50,6 +50,9 @@ module.exports.editCampground = async (req, res) => {
     const { id } = req.params
     // take spread of object from req.body.campground in edit.ejs form
     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground })
+    const imgs = req.files.map( f => ({ url:f.path, filename:f.filename }))
+    campground.images.push(...imgs) 
+    await campground.save()
     req.flash('success', 'Succesfully updated campground')
     res.redirect(`/campgrounds/${campground._id}`)
 }

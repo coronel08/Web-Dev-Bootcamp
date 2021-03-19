@@ -27,7 +27,7 @@ router.route('/:id')
     // Display a camgrounds detail by using id
     .get(wrapAsync(campgrounds.showCampgrounds))
     // Path to update edit information on campground
-    .put(isLoggedIn, isAuthor, validateCampground, wrapAsync(campgrounds.editCampground))
+    .put(isLoggedIn, isAuthor, upload.array('campground[image]'), validateCampground, wrapAsync(campgrounds.editCampground))
     // Delete path/route
     .delete(isLoggedIn, isAuthor, wrapAsync(campgrounds.deleteCampground))
 
