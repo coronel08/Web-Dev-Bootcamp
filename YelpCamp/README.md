@@ -64,3 +64,5 @@ Make sure to create .env file with our cloudlare information
 * [x] Add image upload to campgrounds using cloudinary
     * [x] Create Cloudinaryconfig file and use it in routes/campground
     * [x] Also npm i dotenv and store cloudinary info there, add conditional in app.js to see if in development mode or deployment.
+    * [x] Add upload images to edit page, CRUD imgs
+* [x] Adding Maps using mapbox
