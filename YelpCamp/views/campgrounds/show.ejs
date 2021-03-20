@@ -4,7 +4,6 @@
 <body>
     <div class="row">
         <div class="col-md-6">
-
             <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <% campground.images.forEach((img, i) => { %> 
@@ -62,6 +61,11 @@
             </div>
         </div>
         <div class="col-md-6">
+            <!-- Map, script at bottom -->
+            <div class="col">
+                <div id='map' style='width: 400px; height: 300px;'></div>
+            </div>
+            <!-- Current user conditional -->
             <% if(currentUser) { %> 
                 <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="validated-form" novalidate>
                     <div class="my-3">
@@ -118,4 +122,13 @@
     </div>
 </body>
 
-    </html>
+<script>
+    mapboxgl.accessToken = '<%- process.env.MAPBOX_TOKEN %>';
+    let map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+</script>
+</html>
