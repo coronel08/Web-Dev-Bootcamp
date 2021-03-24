@@ -111,7 +111,7 @@ map.on('load', function () {
 			coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
 		}
 
-		new mapboxgl.Popup()
+		new mapboxgl.Popup({offset:[0,-50]})
 			.setLngLat(coordinates)
 			.setHTML(popUpMarkup)
 			.addTo(map);

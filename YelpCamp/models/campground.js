@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Review = require('./review')
 
+const opts = {toJSON: {virtuals: true} }
+
 const CampgroundSchema = new Schema({
     title: String,
     images: [
@@ -37,7 +39,13 @@ const CampgroundSchema = new Schema({
             ref: 'Review'
         }
     ]
+}, opts)
+
+// Virtual Schema for organizing mapbox
+CampgroundSchema.virtual('properties.popUpMarkup').get(function(){
+    return `<a href="/campgrounds/${this._id}">${this.title}</a>`
 })
+
 
 // Delete query middleware used to dlt reviews when campsite is dlt'ed
 CampgroundSchema.post('findOneAndDelete', async function(doc){
