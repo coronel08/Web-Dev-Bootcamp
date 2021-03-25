@@ -123,4 +123,7 @@ map.on('load', function () {
 	map.on('mouseleave', 'clusters', function () {
 		map.getCanvas().style.cursor = '';
 	});
+
+	// Add zoom and rotation controls
+	map.addControl(new mapboxgl.NavigationControl())
 });
