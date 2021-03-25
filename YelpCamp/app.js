@@ -12,6 +12,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
+const helmet = require('helmet')
 
 // Ejsmate imported to handle ejs partials in template
 const ejsMate = require('ejs-mate')
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 // Middleware for session
 const sessionConfig = {
+    name: 'sesh',
     secret: 'thissecret',
     resave: false,
     saveUninitialized: true,
@@ -52,6 +54,8 @@ const sessionConfig = {
 app.use(session(sessionConfig))
 // Flash middleware
 app.use(flash())
+// middleware, using helmet to secure site
+app.use(helmet({ contentSecurityPolicy: false }))
 
 // passport for authentication and session
 app.use(passport.initialize())

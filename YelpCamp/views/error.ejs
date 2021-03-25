@@ -2,6 +2,8 @@
 
 <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading"> <%= err.message %> </h4>
-    <p>Alert error, something went wrong, this is from error.ejs </p>
-    <p><%= err.stack %> </p>
+    <% if (process.env.NODE_ENV !== "production") { %> 
+        <p>Alert error, something went wrong, this is from error.ejs </p>
+        <p><%= err.stack %> </p>
+    <% } %> 
 </div>
