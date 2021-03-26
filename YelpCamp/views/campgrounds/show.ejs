@@ -31,9 +31,9 @@
                 <% } %>   -->
                 <div class="card-body">
                     <h5 class="card-title">
-                        <%= campground.title %> Campground
+                        <%= campground.title %>
                     </h5>
-                    <p class="card-text"><span class="text-muted">Campground Description: </span>
+                    <p class="card-text"><span class="text-muted">Description: </span>
                         <%= campground.description %>
                     </p>
                 </div>
@@ -44,11 +44,11 @@
                     </li>
                 </ul>
                 <div class="card-body">
-                    <a href="/campgrounds" class="card-link btn btn-info">All Campgrounds</a>
+                    <a href="/campgrounds" class="card-link btn btn-info">All Venues</a>
                     <!-- Authentication check to only show if author matches article -->
                     <% if(currentUser && campground.author.equals(currentUser._id)) { %>
                         <a href="/campgrounds/<%=campground._id%>/edit" class="card-link btn btn-success">Edit
-                            Campground</a>
+                            Venue</a>
                         <!-- Form with override method to delete -->
                         <form class="d-inline" action="/campgrounds/<%=campground._id%>?_method=DELETE"
                             method="POST">
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <!-- Map, script at bottom -->
+            <!-- Map, script is located at bottom of this page script -->
             <div class="col">
                 <div id='map'></div>
             </div>
