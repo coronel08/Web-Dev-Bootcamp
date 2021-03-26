@@ -68,13 +68,13 @@ module.exports.editCampground = async (req, res) => {
         }
         await campground.updateOne({$pull: {images: {filename:{$in: req.body.deleteImages }}}})
     }
-    req.flash('success', 'Succesfully updated campground')
+    req.flash('success', 'Succesfully updated')
     res.redirect(`/campgrounds/${campground._id}`)
 }
 
 module.exports.deleteCampground = async (req, res) => {
     const { id } = req.params
     await Campground.findByIdAndDelete(id)
-    req.flash('success','Succesfully deleted campground!')
+    req.flash('success','Succesfully deleted!')
     res.redirect('/campgrounds')
 }
