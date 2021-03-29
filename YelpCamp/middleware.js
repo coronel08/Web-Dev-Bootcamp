@@ -1,7 +1,7 @@
-// Campground middleware for isLoggedIn, validateCampground, isAuthor
-const { campgroundSchema, reviewSchema } = require('./schema')
+const { campgroundSchema, reviewSchema, venueSchema } = require('./schema')
 const ExpressError = require('./utils/ExpressError')
 const Campground = require('./models/campground')
+const Venue = require('./models/venue')
 const Review = require('./models/review')
 
 
@@ -28,10 +28,10 @@ module.exports.validateCampground = (req, res, next) => {
 // Middleware to see if author doesnt match user
 module.exports.isAuthor = async(req, res, next) => {
     const {id} = req.params
-    const campground = await Campground.findById(id)
-    if(!campground.author.equals(req.user._id)){
+    const venue = await Venue.findById(id)
+    if(!venue.author.equals(req.user._id)){
         req.flash('error','Unauthorized action, unable to edit someone elses post')
-        return res.redirect(`/campgrounds/${id}`)
+        return res.redirect(`/venues/${id}`)
     }
     next()
 }
@@ -53,7 +53,17 @@ module.exports.isReviewAuthor = async(req, res, next) => {
     const review = await Review.findById(reviewId)
     if(!review.author.equals(req.user._id)){
         req.flash('error','Unauthorized action, unable to edit someone elses post')
-        return res.redirect(`/campgrounds/${id}`)
+        return res.redirect(`/venues/${id}`)
     }
     next()
+}
+
+module.exports.validateVenue = (req,res,next) => {
+    const { error } = venueSchema.validate(req.body)
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next()
+    }
 }

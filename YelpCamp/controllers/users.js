@@ -14,7 +14,7 @@ module.exports.registerUser = async (req, res) => {
         req.login(registeredUser, err => {
             if(err) return next(err)
             req.flash('success', 'Welcome!')
-            res.redirect('/campgrounds')
+            res.redirect('/venues')
         })
     } catch (err) {
         req.flash('error', err.message)
@@ -28,7 +28,7 @@ module.exports.renderLogin = async (req, res) => {
 
 module.exports.loginUser = (req, res) => {
     req.flash('success', 'Welcome back')
-    const redirectUrl = req.session.returnTo || '/campgrounds'
+    const redirectUrl = req.session.returnTo || '/venues'
     // clear session in case of refresh
     delete req.session.returnTo
     res.redirect(redirectUrl)
@@ -37,5 +37,5 @@ module.exports.loginUser = (req, res) => {
 module.exports.logoutUser = (req,res) => {
     req.logout()
     req.flash('success', 'Logged out!')
-    res.redirect('/campgrounds')
+    res.redirect('/venues')
 }

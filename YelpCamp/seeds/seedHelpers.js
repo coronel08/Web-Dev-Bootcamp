@@ -1,6 +1,5 @@
 module.exports.descriptors = [
     'Rock',
-    'Ancient',
     'Whiskey',
     'Roaring',
     'Cascade',
@@ -10,8 +9,8 @@ module.exports.descriptors = [
     'Bullfrog',
     'OX',
     'Misty',
-    'Elk',
-    'Grizzly',
+    'RIff',
+    'Live',
     'Ocean',
     'Ska',
     'Sky',

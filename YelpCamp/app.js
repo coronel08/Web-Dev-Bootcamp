@@ -22,11 +22,13 @@ const { nextTick } = require('process')
 const userRoutes = require('./routes/users')
 const campgroundRoutes = require('./routes/campgrounds')
 const reviewRoutes = require('./routes/reviews')
+const venueRoutes = require('./routes/venues')
 
 // error handling 
 const wrapAsync = require('./utils/wrapAsync')
 const ExpressError = require('./utils/ExpressError')
 const campground = require('./models/campground')
+const venue = require('./models/venue')
 module.exports.campgroundSchema
 
 // Middleware for views engine
@@ -75,7 +77,7 @@ app.use((req, res, next) =>{
 })
 
 
-mongoose.connect('mongodb://root:example@localhost:27017/yelp-camp?authSource=admin',
+mongoose.connect('mongodb://root:example@localhost:27017/concert-zone?authSource=admin',
     { 
         useNewUrlParser: true, 
         useUnifiedTopology: true, 
@@ -101,6 +103,8 @@ app.use('/', userRoutes)
 app.use('/campgrounds', campgroundRoutes)
 // Route for reviews
 app.use('/campgrounds/:id/reviews', reviewRoutes)
+app.use('/venues', venueRoutes)
+app.use('/venues/:id/reviews', reviewRoutes)
 
 // Just making a response for landing page
 app.get('/', (req, res) => {
