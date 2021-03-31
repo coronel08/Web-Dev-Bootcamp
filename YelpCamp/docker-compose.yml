@@ -13,8 +13,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
   app:
-    container_name: conert-zone
     build: ./
+    container_name: conert-zone
     restart: always
     ports: 
       - 3005:3005
