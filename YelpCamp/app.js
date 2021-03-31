@@ -16,6 +16,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 const helmet = require('helmet')
+const secret = process.env.SECRET || 'thissecret'
 
 // Ejsmate imported to handle ejs partials in template
 const ejsMate = require('ejs-mate')
@@ -48,7 +49,7 @@ app.use(methodOverride('_method'))
 // Store session in Mongo Atlas
 const store = new MongoStore({
     url: mongoURL,
-    secret: 'thissecret',
+    secret,
     touchAfter: 24 * 60 * 60
 })
 store.on("error", function (e){
@@ -59,7 +60,7 @@ store.on("error", function (e){
 const sessionConfig = {
     store: store,
     name: 'sesh',
-    secret: 'thissecret',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
