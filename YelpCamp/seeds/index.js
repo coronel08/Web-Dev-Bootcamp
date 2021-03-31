@@ -6,7 +6,7 @@ const venues = require('./venues')
 
 
 // Mongoose connection and catch/error 
-mongoose.connect('mongodb://root:example@localhost:27017/concert-zone?authSource=admin',
+mongoose.connect('mongodb://root:example@mongo:27017/concert-zone?authSource=admin',
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
@@ -43,7 +43,7 @@ const makeRandomEntries = async () => {
                     cities[random1000].latitude
                 ]
             },
-            author: '606247be1f5dd391b69f72e2'
+            author: '6063a9d0ddf667bda253b0c1'
         })
         await camp.save()
     }
@@ -64,7 +64,7 @@ const makeEntries = async () => {
                     venue.geometry.coordinates[1]
                 ]
             },
-            author: '606247be1f5dd391b69f72e2'
+            author: '6063a9d0ddf667bda253b0c1'
         })
         await camp.save()
     }

@@ -5,6 +5,7 @@ if(process.env.NODE_ENV !== 'production'){
 const express = require('express')
 const app = express()
 const path = require('path')
+const PORT = 3005
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const session = require('express-session')
@@ -77,7 +78,7 @@ app.use((req, res, next) =>{
 })
 
 
-mongoose.connect('mongodb://root:example@localhost:27017/concert-zone?authSource=admin',
+mongoose.connect('mongodb://root:example@mongo:27017/concert-zone?authSource=admin',
     { 
         useNewUrlParser: true, 
         useUnifiedTopology: true, 
@@ -123,6 +124,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-app.listen(3005, () => {
-    console.log('Serving on port 3005')
+app.listen(PORT, () => {
+    console.log(`Serving on port ${PORT}`)
 })

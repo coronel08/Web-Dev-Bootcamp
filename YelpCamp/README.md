@@ -66,3 +66,4 @@ Make sure to create .env file with our cloudlare information
     * [x] Also npm i dotenv and store cloudinary info there, add conditional in app.js to see if in development mode or deployment.
     * [x] Add upload images to edit page, CRUD imgs
 * [x] Adding Maps using mapbox
+* [x] Dockerize the node/express/mongo application. Used this for reference [dockerize express and mongo](https://dev.to/jay97/docker-compose-an-express-and-mongo-app-aai)
