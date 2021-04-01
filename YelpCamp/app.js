@@ -5,7 +5,7 @@ if(process.env.NODE_ENV !== 'production'){
 const express = require('express')
 const app = express()
 const path = require('path')
-const PORT = 3005
+const PORT = process.env.PORT || 3005
 const mongoose = require('mongoose')
 const mongoURL = process.env.DB_URL
 const methodOverride = require('method-override')

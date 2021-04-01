@@ -1,12 +1,17 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
 const mongoose = require('mongoose')
 const Venue = require('../models/venue')
 const cities = require('./cities')
 const { places, descriptors } = require('./seedHelpers')
 const venues = require('./venues')
+const mongoURL = process.env.DB_URL
 
 
 // Mongoose connection and catch/error 
-mongoose.connect('mongodb://root:example@mongo:27017/concert-zone?authSource=admin',
+mongoose.connect(mongoURL,
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
@@ -43,7 +48,7 @@ const makeRandomEntries = async () => {
                     cities[random1000].latitude
                 ]
             },
-            author: '6063a9d0ddf667bda253b0c1'
+            author: '60650993fb26680015a50381'
         })
         await camp.save()
     }
@@ -64,7 +69,7 @@ const makeEntries = async () => {
                     venue.geometry.coordinates[1]
                 ]
             },
-            author: '6063a9d0ddf667bda253b0c1'
+            author: '60650993fb26680015a50381'
         })
         await camp.save()
     }
