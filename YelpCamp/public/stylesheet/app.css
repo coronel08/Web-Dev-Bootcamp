@@ -13,3 +13,7 @@ img{
     margin: 5px 0px 0px 5px;
     max-height: 600px;
 }
+
+.fancy-font{
+    font-family: 'Train One', cursive;
+}
