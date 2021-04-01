@@ -1,0 +1,8 @@
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_KEY=
+CLOUDINARY_SECRET=
+MAPBOX_TOKEN=
+MONGO_ATLAS_USER = 
+MONGO_ATLAS_PASSWORD = 
+DB_URL = mongodb+srv://replace@cluster0.bcovp.mongodb.net/concert-zone?retryWrites=true&w=majority
+SECRET= 

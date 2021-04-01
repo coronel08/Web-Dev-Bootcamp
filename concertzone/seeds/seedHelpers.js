@@ -1,0 +1,42 @@
+module.exports.descriptors = [
+    'Rock',
+    'Whiskey',
+    'Roaring',
+    'Cascade',
+    'Tumbling',
+    'Silent',
+    'Tone',
+    'Bullfrog',
+    'OX',
+    'Misty',
+    'RIff',
+    'Live',
+    'Ocean',
+    'Ska',
+    'Sky',
+    'Dusty',
+    'Diamond'
+]
+
+module.exports.places = [
+    'Flats',
+    'Village',
+    'Canyon',
+    'Pond',
+    'Group ',
+    'Horse ',
+    'Ghost Town',
+    'Dispersed ',
+    'Backcountry',
+    'River',
+    'Creek',
+    'Creekside',
+    'Bay',
+    'Spring',
+    'Bayshore',
+    'Sands',
+    'Mule',
+    'Hunting',
+    'Cliffs',
+    'Hollow'
+]

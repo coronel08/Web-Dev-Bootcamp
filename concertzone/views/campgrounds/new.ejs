@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate') %> 
+
+<div class="container">
+    <h1 class="text-center"> New Venue </h1>
+    <div class="col-10 offset-1">
+        <form action="/campgrounds" method="POST" class="validated-form" enctype="multipart/form-data" novalidate>
+            <div class="row">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label class="form-label" for="location">City</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                </div>
+                <div class="form-file custom-file mb-3 col-md-6">
+                    <label class="form-file-label custom-file-label" for="image">Add Images</label>
+                    <input class="form-control form-file-input" type="file" id="image" name="campground[image]" multiple required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 form-group col">
+                    <label class="form-label" for="price">Price</label>
+                    <input class="form-control" type="number" id="price" name="campground[price]" required>
+                </div>
+                <div class="mb-3 form-group col">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" name="campground[description]" id="description" rows="3" type="text"></textarea>
+                </div>
+            </div>
+            <span>
+                <a class="btn btn-danger m-md-1" href="/campgrounds">Back</a>
+                <button class="btn btn-success m-md-1">Submit</button>
+            </span>
+        </form>
+    </div>
+</div>
+
+
+</html>
