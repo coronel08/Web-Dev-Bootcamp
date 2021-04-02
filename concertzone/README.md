@@ -19,13 +19,21 @@ The goal is to make a web app/site that allows experiences at venues to be share
 To deploy you have the options of
 * localhost deployment 
     * install mongodb
-        * replace the mongoLocal variable in app.js line 95 with your <<dbuser>> and <<password>>
+        * replace the mongoLocal variable in app.js line 95 with your <dbuser> and <password>
 * docker deployment,
-    * repalce the mongoDockerDb variable in app.js line 96 with your <<dbuser>> and <<password>>
+    * repalce the mongoDockerDb variable in app.js line 96 with your <dbuser> and <password>
 * cloud deployment
+    * git init
+    * heroku create 
+    * git remote -v
+    * git add .
+    * git commit -m ""
+    * git push heroku master
+
         * Make sure to rename items in env file with your credentials. Then rename env file as .env
             * cloudinary: Used as cloud media storage in uploads section
             * mongoAtlas: Used as cloud MongoDB Instance
+
 <b>All options require you to sign up for Mapbox and use your token in the env file then rename it as .env</b>
 
 
