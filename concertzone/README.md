@@ -8,9 +8,10 @@ This is my full stack project
 
 The goal is to make a web app/site that allows experiences at venues to be shared, I miss it. <br><br>
 
+Finish dockerizing the site using this as an example[Toptal Docker Node Auth App](https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-3)
 
 ## Table of Contents
-* [Deployment]
+* [Deployment](#deployment)
 * [Folder Structure](#folder-structure)
 * [ToDo](#todo)
 <br>
