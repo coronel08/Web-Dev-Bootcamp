@@ -10,9 +10,17 @@ Make sure to create .env file with our cloudlare information
 
 
 ## Table of Contents
+* [Deploy](#deploy)
 * [Structure](#structure)
 * [ToDo](#todo)
 
+### Deploy
+```
+npm init -y
+npm i express
+// create app.js and readme etc and write file
+node app.js //or nodemon app.js
+```
 
 ### Structure
 
