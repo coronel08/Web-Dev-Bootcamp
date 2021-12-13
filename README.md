@@ -1,4 +1,4 @@
-# Web-Dev-Bootcamp-Colt-Steele
+# Web-Dev-Bootcamp
 Starting the bootcamp, moved notes to my-notes.fcoronel.com
 
 
